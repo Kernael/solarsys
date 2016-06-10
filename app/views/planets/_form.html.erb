@@ -1,0 +1,24 @@
+<%= form_for(@planet) do |f| %>
+  <% if @planet.errors.any? %>
+      <div id="error_explanation">
+          <h2><%= pluralize(@planet.errors.count, "error") %> prohibited this planet from being saved : </h2>
+
+          <ul>
+              <% @planet.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+          </ul>
+      </div>
+  <% end %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br />
+  <%= f.label :planet_type %>
+  <%= f.select :planet_type, Planet.valid_types %>
+  <br />
+  <%= f.collection_select(:star_id, Star.all, :id, :name,
+    { prompt: 'Select star' }) %>
+  <br /><br />
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,38 @@
+<% provide(:title, 'Planets') %>
+
+<h1>Listing planets</h1>
+
+<%= link_to 'Ascending sort', planets_path(direction: 'ASC'), method: :get %>
+<%= link_to 'Descending sort', planets_path(direction: 'DESC'), method: :get %>
+
+<br />
+<br />
+
+<table style='width:100%'>
+  <tr>
+    <td>Name</td>
+    <td>Type</td>
+    <td>Star</td>
+  </tr>
+
+  <% @planets.each do |p| %>
+    <tr>
+      <td><%= p.name %></td>
+      <td><%= p.planet_type %></td>
+      <td><%= p.star.name %></td>
+      <td><%= link_to 'Destroy', planet_path(p),
+            data: {confirm: 'Are you sure ?'}, method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+<br />
+
+<%= link_to 'Terrestrial filter', planets_path(filter: 'terrestrial'), method: :get %>
+<%= link_to 'Giant filter', planets_path(filter: 'giant'), method: :get %>
+
+<br />
+<br />
+
+<%= link_to 'Create new planet', new_planet_path %>
