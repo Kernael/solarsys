@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610141500) do
+ActiveRecord::Schema.define(version: 20160610142706) do
+
+  create_table "planets", force: :cascade do |t|
+    t.string   "name"
+    t.string   "type"
+    t.integer  "star_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "planets", ["name"], name: "index_planets_on_name", unique: true
+  add_index "planets", ["star_id"], name: "index_planets_on_star_id"
 
   create_table "stars", force: :cascade do |t|
     t.string   "name"
