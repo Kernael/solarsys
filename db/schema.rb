@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610142706) do
+ActiveRecord::Schema.define(version: 20160610145059) do
 
   create_table "planets", force: :cascade do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "planet_type"
     t.integer  "star_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "planets", ["name"], name: "index_planets_on_name", unique: true
